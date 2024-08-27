@@ -16,6 +16,7 @@ import java.util.Date;
 @Builder
 @Log4j2
 
+// Validation
 public class ProductDto implements Serializable {
 
     // Serileştirme
@@ -26,4 +27,4 @@ public class ProductDto implements Serializable {
     private double productPrice;
     private int productQuantify;
     private Date createDate;
-}
+} //end ProductDto
