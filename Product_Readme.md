@@ -19,6 +19,8 @@ http://llocalhost:8761
 http://localhost:8761/eureka/apps/
 http://localhost:8761/eureka/apps/PRODUCT-SERVICE
 http://localhost:8761/eureka/apps/
+http://localhost:8888/application/default
+
 ```
 ---
 
