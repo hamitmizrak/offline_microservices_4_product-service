@@ -43,5 +43,6 @@ public class ProductDto implements Serializable {
 
     // Date
     @Builder.Default
-    private Date createDate= new Date(System.currentTimeMillis());
+    private Date createdDate= new Date(System.currentTimeMillis());
 } //end ProductDto
+

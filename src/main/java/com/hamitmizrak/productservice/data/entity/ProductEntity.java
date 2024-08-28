@@ -43,5 +43,5 @@ public class ProductEntity implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    private Date createdDate;
 } //end ProductEntity

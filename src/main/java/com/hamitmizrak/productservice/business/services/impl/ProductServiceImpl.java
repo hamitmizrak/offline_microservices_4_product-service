@@ -51,7 +51,7 @@ public class ProductServiceImpl implements IProductServices<ProductDto, ProductE
             iProductRepository.save(productEntity);
             // Kayıt işleminden sonra Id Set et
             productDto.setId(productEntity.getId());
-            productDto.setCreateDate(productEntity.getCreateDate());
+            productDto.setCreatedDate(productEntity.getCreatedDate());
         }else{
             throw new NullPointerException("ProductDto is null");
         }
