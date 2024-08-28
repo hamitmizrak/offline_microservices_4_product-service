@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface IProductApi<D> {
 
+    // DELETE ALL
+    public ResponseEntity<String>  productApiDeleteAll();
+
+    ////////////////////////////////////////////////////////////////////////////////////////
     // C R U D
     // CREATE
     public ResponseEntity<?>  productApiCreate(D d);

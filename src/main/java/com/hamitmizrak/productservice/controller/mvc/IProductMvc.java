@@ -12,6 +12,10 @@ Spring mvc kuralları
 */
 public interface IProductMvc {
 
+    // DELETE ALL
+    public String deleteAll();
+
+    ////////////////////////////////////////////////////////
     // CREATE GET
     // Model: import org.springframework.ui.Model;
     public String productCreateGet(Model model);

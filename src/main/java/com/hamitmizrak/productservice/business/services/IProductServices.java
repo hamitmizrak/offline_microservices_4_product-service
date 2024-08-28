@@ -10,7 +10,14 @@ public interface IProductServices <D,E>{
     public D EntityToDto(E e);
     public E DtoToEntity(D d);
 
-    ///////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    // SPEED DATA
+
+    //DELETE ALL
+    public String productServiceDeleteAll();
+
+    ///////////////////////////////////////////////////////////////////////////
     // C R U D
     // CREATE
     public D productServiceCreate(D d);

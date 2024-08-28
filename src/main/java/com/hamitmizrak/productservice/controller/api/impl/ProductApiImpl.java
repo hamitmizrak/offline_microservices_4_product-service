@@ -25,6 +25,16 @@ public class ProductApiImpl implements IProductApi<ProductDto> {
     // Injection
     private final IProductServices iProductServices;
 
+    ///////////////////////////////////////////////////////////////
+    // DELETE ALL  (PRODUCT)
+    @Override
+    @GetMapping("/delete/all")
+    public ResponseEntity<String> productApiDeleteAll() {
+        return ResponseEntity.ok(iProductServices.productServiceDeleteAll());
+    }
+
+    ///////////////////////////////////////////////////////////////
+    // CREATE (PRODUCT)
     // http://localhost:5555/product/api/v1/create
     @Override
     @PostMapping("/create")
@@ -32,6 +42,8 @@ public class ProductApiImpl implements IProductApi<ProductDto> {
         return ResponseEntity.ok(iProductServices.productServiceCreate(productDto));
     }
 
+    ///////////////////////////////////////////////////////////////
+    // LIST (PRODUCT)
     // http://localhost:5555/product/api/v1/list
     @Override
     @GetMapping("/list")
@@ -39,6 +51,8 @@ public class ProductApiImpl implements IProductApi<ProductDto> {
         return ResponseEntity.ok(iProductServices.productServiceList());
     }
 
+    ///////////////////////////////////////////////////////////////
+    // FIND (PRODUCT)
     // http://localhost:5555/product/api/v1/find/1
     @Override
     @GetMapping("/find/{id}")
@@ -46,6 +60,8 @@ public class ProductApiImpl implements IProductApi<ProductDto> {
         return ResponseEntity.ok(iProductServices.productServiceFindById(id));
     }
 
+    ///////////////////////////////////////////////////////////////
+    // UPDATE (PRODUCT)
     // http://localhost:5555/product/api/v1/update/1
     @Override
     @PutMapping("/update/{id}")
@@ -53,6 +69,8 @@ public class ProductApiImpl implements IProductApi<ProductDto> {
        return ResponseEntity.ok(iProductServices.productServiceUpdate(id,productDto));
     }
 
+    ///////////////////////////////////////////////////////////////
+    // DELETE (PRODUCT)
     // http://localhost:5555/product/api/v1/delete/1
     @DeleteMapping("/delete/{id}")
     @Override

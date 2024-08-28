@@ -38,6 +38,18 @@ public class ProductMvcImpl implements IProductMvc {
 
 
     ////////////////////////////////////////////////////////////////
+
+    // http://localhost:5555/product/mvc/v1/deleteAll
+    // DELETE ALL
+    @Override
+    @GetMapping("/deleteAll") // Burası URL
+    public String deleteAll() {
+        iProductServices.productServiceDeleteAll();
+        modelAttributesTemp = iProductServices.productServiceList().size()+" tane veri silindir";
+        return "redirect:/product/mvc/v1/list"; // Burası @GetMapping URL gidecek yer.
+    }
+
+    ////////////////////////////////////////////////////////////////
     // http://localhost:5555/product/mvc/v1/create
     // CREATE GET
     @Override
@@ -144,6 +156,7 @@ public class ProductMvcImpl implements IProductMvc {
     /////////////////////////////////////////////////////////
     // DELETE
     @Override
+    @GetMapping( "/delete/{id}")
     public String productDeleteGet( @PathVariable(name = "id") Long id, Model model) {
         // eğer id numaralı veri varsa
         if (iProductServices.productServiceFindById(id)!=null) {

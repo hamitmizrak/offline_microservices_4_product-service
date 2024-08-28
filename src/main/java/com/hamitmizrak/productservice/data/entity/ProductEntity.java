@@ -22,14 +22,10 @@ import java.util.Date;
 // Entity
 @Entity(name="Product")
 @Table(name="product")
-public class ProductEntity implements Serializable {
+public class ProductEntity extends BaseEntity implements Serializable {
 
     // Serileştirme
     public static final Long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     //@Column(name = "product_name",unique = true,nullable = false,insertable = true,updatable = true)
     @Column(name = "product_name")
@@ -41,7 +37,4 @@ public class ProductEntity implements Serializable {
     @Column(name = "product_quantify")
     private String productQuantify;
 
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
 } //end ProductEntity

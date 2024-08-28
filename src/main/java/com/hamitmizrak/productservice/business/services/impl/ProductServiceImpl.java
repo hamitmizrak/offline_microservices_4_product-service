@@ -40,7 +40,15 @@ public class ProductServiceImpl implements IProductServices<ProductDto, ProductE
         return modelMapperBean.getModelMapperMethod().map(productDto, ProductEntity.class);
     }
 
-    ///////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
+    // DELETE ALL  (PRODUCT)
+    @Override
+    public String productServiceDeleteAll() {
+        iProductRepository.deleteAll();
+        return productServiceList().size()+" silindi";
+    }
+
+    /////////////////////////////////////////////////////////////////////////
     // C R U D
     // CREATE (PRODUCT)
     @Override
