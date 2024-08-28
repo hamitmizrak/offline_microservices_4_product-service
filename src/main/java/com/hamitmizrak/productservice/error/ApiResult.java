@@ -1,6 +1,7 @@
 package com.hamitmizrak.productservice.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,32 +11,38 @@ import java.util.Map;
 // LOMBOK
 @Data
 @Builder
+@AllArgsConstructor
 
-// Spring Framework gelen hataları(errors) kendimize göre yakalayalım
-// Jackson: Objeyi json'a çevirir
-// JsonInclude.Include.NON_NULL: Eğer hata mesajında null değer varsa backentte gönderme
+// spring Frameworkta gelen Error'ları kendimize göre yakalamak
+// (Jackson: objeyi json'a çevirir)
+// Eğer sistemde null değer varsa backentte gönderme
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResult {
 
-
-    // sem pvc
+    // sem vpc
+    private String path;
+    private String message;
+    private String error;
     private Integer status;
-    private String  error;
-    private String  message;
-    private String  path;
-    private Map<String,String> validationErrors;
     private Date createdDate=new Date(System.currentTimeMillis());
+    private Map<String,String> validationErrors;
 
     // parametresiz constructor
     public ApiResult() {
     }
 
-    // smp
     // parametreli constructor
-    public ApiResult(Integer status, String message, String path) {
-        this.status = status;
-        this.message = message;
+    public ApiResult(String path, String message,  Integer status) {
         this.path = path;
+        this.message = message;
+        this.status = status;
     }
 
+    // parametreli constructor
+    public ApiResult(String path, String message, String error, Integer status) {
+        this.path = path;
+        this.message = message;
+        this.error = error;
+        this.status = status;
+    }
 } //end class

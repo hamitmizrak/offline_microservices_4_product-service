@@ -3,6 +3,27 @@
 
 -- 
 
+## Çalıştırma Sıralama
+```sh
+1-) Eureka Server 
+2-) Config Server
+3-) Api Gateway
+4-) Product Server 
+```
+---
+
+
+## URL
+```sh
+http://llocalhost:8761
+http://localhost:8761/eureka/apps/
+http://localhost:8761/eureka/apps/PRODUCT-SERVICE
+http://localhost:8761/eureka/apps/
+```
+---
+
+
+
 ## EnableEurekaClient Ve EnableDiscoveryClient
 `@EnableEurekaClient` ve `@EnableDiscoveryClient` anotasyonları, Spring Cloud uygulamalarında servis keşfini etkinleştirmek için kullanılır, ancak farklı kapsam ve esneklik sunarlar. İşte bu iki anotasyon arasındaki temel farklar:
 
