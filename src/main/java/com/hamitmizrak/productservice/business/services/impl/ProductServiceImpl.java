@@ -5,12 +5,15 @@ import com.hamitmizrak.productservice.business.dto.ProductDto;
 import com.hamitmizrak.productservice.business.services.IProductServices;
 import com.hamitmizrak.productservice.data.entity.ProductEntity;
 import com.hamitmizrak.productservice.data.repository.IProductRepository;
+import com.hamitmizrak.productservice.exception.NotFound404Exception;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 // LOMBOK
 @RequiredArgsConstructor
@@ -39,7 +42,7 @@ public class ProductServiceImpl implements IProductServices<ProductDto, ProductE
 
     ///////////////////////////////////////////
     // C R U D
-    // CREATE
+    // CREATE (PRODUCT)
     @Override
     @Transactional
     public ProductDto productServiceCreate(ProductDto productDto) {
@@ -55,30 +58,74 @@ public class ProductServiceImpl implements IProductServices<ProductDto, ProductE
         return productDto;
     }
 
-    // LIST
+    // LIST  (PRODUCT)
     @Override
     public List<ProductDto> productServiceList() {
-        return List.of();
+        Iterable<ProductEntity> productEntityList=   iProductRepository.findAll();
+
+        // List
+        List<ProductDto> productDtoList = new ArrayList<>();
+        for (ProductEntity temp:productEntityList){
+            ProductDto productDto=EntityToDto(temp);
+            productDtoList.add(productDto);
+        }
+        log.info(productDtoList.size());
+        log.info(productDtoList);
+
+        //return List.of();
+        return productDtoList;
     }
 
-    // FIND BY ID
+    // FIND BY ID (PRODUCT)
     @Override
     public ProductDto productServiceFindById(Long id) {
-        return null;
+        // 1.YOL
+        /*
+        Optional<ProductEntity>  findOptionalProductEntity= iProductRepository.findById(id);
+        ProductDto productDto=EntityToDto(findOptionalProductEntity.get());
+        if(findOptionalProductEntity.isPresent()){
+            return  productDto;
+        }
+        */
+
+        // 2.YOL
+        ProductEntity productEntity=null;
+        if(id!=null){
+             productEntity = iProductRepository.findById(id)
+                    .orElseThrow(()->new NotFound404Exception(id+" nolu id bulunamadı"));
+        }else if(id==null){
+            throw new NullPointerException("id is null");
+        }
+        return EntityToDto(productEntity);
     }
 
-    // UPDATE
+    // UPDATE (PRODUCT)
     @Override
     @Transactional
     public ProductDto productServiceUpdate(Long id, ProductDto productDto) {
-        return null;
+        // Önce Product Id ile Bul
+        ProductDto findUpdateProductDto=productServiceFindById(id);
+        if(findUpdateProductDto!=null){
+            ProductEntity productEntity=DtoToEntity(productDto);
+            productEntity.setProductName(findUpdateProductDto.getProductName());
+            productEntity.setProductPrice(findUpdateProductDto.getProductPrice());
+            productEntity.setProductQuantify(findUpdateProductDto.getProductQuantify());
+            iProductRepository.save(productEntity);
+        }
+        return productDto;
     }
 
-    // DELETE
+    // DELETE (PRODUCT)
     @Override
     @Transactional
     public ProductDto productServiceDelete(Long id) {
-        return null;
+        // Önce Product Id ile Bul
+        ProductDto findDeleteProductDto=productServiceFindById(id);
+
+        if(findDeleteProductDto!=null){
+            iProductRepository.deleteById(id);
+        }
+        return findDeleteProductDto;
     }
 
 } //end ProductServiceImpl
