@@ -39,7 +39,7 @@ public class ProductEntity implements Serializable {
     private double productPrice;
 
     @Column(name = "product_quantify")
-    private int productQuantify;
+    private String productQuantify;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

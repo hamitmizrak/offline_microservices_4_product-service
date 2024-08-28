@@ -1,6 +1,7 @@
 package com.hamitmizrak.productservice.business.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,13 +33,13 @@ public class ProductDto implements Serializable {
     private String productName;
 
     // PRICE : Fiyat
-    @NotEmpty(message = "{product.price.validation.NotNull.message}")
-    @Size(min=1,max = 15, message = "{product.price.validation.constraints.NotNull.message}")
+    @NotNull(message = "{product.price.validation.NotNull.message}")
+    //@Size(min=1,max = 15, message = "{product.price.validation.constraints.NotNull.message}")
     private double productPrice;
 
     // Quantify: Ölçü
     @NotEmpty(message = "{product.quantify.validation.NotNull.message}")
-    private int productQuantify;
+    private String productQuantify;
 
     // Date
     @Builder.Default

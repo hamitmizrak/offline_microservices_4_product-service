@@ -106,10 +106,12 @@ public class ProductServiceImpl implements IProductServices<ProductDto, ProductE
         // Önce Product Id ile Bul
         ProductDto findUpdateProductDto=productServiceFindById(id);
         if(findUpdateProductDto!=null){
-            ProductEntity productEntity=DtoToEntity(productDto);
-            productEntity.setProductName(findUpdateProductDto.getProductName());
-            productEntity.setProductPrice(findUpdateProductDto.getProductPrice());
-            productEntity.setProductQuantify(findUpdateProductDto.getProductQuantify());
+            // Bulduğu Object set
+            ProductEntity productEntity=DtoToEntity(findUpdateProductDto);
+            // productDto kaydettir
+            productEntity.setProductName(productDto.getProductName());
+            productEntity.setProductPrice(productDto.getProductPrice());
+            productEntity.setProductQuantify(productDto.getProductQuantify());
             iProductRepository.save(productEntity);
         }
         return productDto;
