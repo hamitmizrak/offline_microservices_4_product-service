@@ -26,8 +26,6 @@ HTTP durum kodları ve açıklamaları:
 - **206 Partial Content**: Sunucu, yalnızca bir kısmını gönderdiği isteğe yanıt verdi.
 
 
-
-
 ### 3xx: Yönlendirme Gerekiyor
 - **300 Multiple Choices**: Birden fazla seçenek mevcut.
 - **301 Moved Permanently**: İstenen kaynak kalıcı olarak yeni bir URL'ye taşındı.
@@ -36,7 +34,6 @@ HTTP durum kodları ve açıklamaları:
 - **304 Not Modified**: Kaynak, son talep edilen tarihten bu yana değişmedi.
 - **305 Use Proxy**: İstenen kaynak yalnızca proxy aracılığıyla erişilebilir.
 - **307 Temporary Redirect**: İstenen kaynak geçici olarak yeni bir URL'de bulunuyor.
-
 
 
 

@@ -14,7 +14,7 @@ public interface IProductServices <D,E>{
 
     // SPEED DATA
 
-    //DELETE ALL
+    // DELETE ALL
     public String productServiceDeleteAll();
 
     ///////////////////////////////////////////////////////////////////////////
